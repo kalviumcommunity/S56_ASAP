@@ -61,14 +61,5 @@ Moderate user-generated content, manage user accounts, and view analytics.
 
 Optimized viewing and interaction across various devices and screen sizes.
 Repository
-Include a link to your project repository to enhance visibility and accessibility.
 
-# Keywords
-Add relevant keywords to improve project discoverability.
-
-# Testing Practices
-Set up a basic test framework to encourage testing practices.
-
-# Dependencies
-Specify dependencies explicitly for reproducible builds and clarity.
 
