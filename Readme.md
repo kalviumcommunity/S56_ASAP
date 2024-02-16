@@ -5,7 +5,8 @@ Weirdest Bollywood Couples Showcase
 This project aims to curate and showcase the most unusual Bollywood couples based on various criteria such as their stories, age differences, compatibility, and public perception.
 
 # Features
-Landing Page:
+LandingPage:
+
 
 Engaging landing page showcasing quirky Bollywood couple combinations.
 Catchy headline inviting users to explore unconventional pairings.
