@@ -13,7 +13,11 @@ const connectToDB=async()=>{
   try{
     await mongoose.connect(mongoURI);
     console.log('connected to mongoDB');
-
+    process.on('SIGINT', async () => {
+        await mongoose.disconnect();
+          console.log('MongoDB disconnected on app termination');
+          process.exit(0);
+          });
   } catch(err){
     console.error('error connecting to mongoDB:', err.message);
 
@@ -23,7 +27,7 @@ const connectToDB=async()=>{
 const disconnectDB =async ()=>{
   try{
     await mongoose.disconnect();
-    console.log('disconnect from mongoDB');
+    console.error('disconnect from mongoDB');
 
   } catch (err){
     console.error('error disconnecting from mongoDB:',err.message);
@@ -39,7 +43,6 @@ if (require.main === module) {
 module.exports={
   connectToDB,
   disconnectDB,
-  mongooseConnection:mongoose.connection,
+  getMongooseConnection: () => mongoose.connection,
 };
 
-module.exports = app;

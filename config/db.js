@@ -1,5 +1,5 @@
+
 const config = {
-    mongoURI: 'mongodb+srv://aryapatil:iamarya@cluster0.kee70lm.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0',
-  };
-  
+  mongoURI: process.env.MONGO_URI,
+}
   module.exports = config;
