@@ -6,11 +6,40 @@ const port = process.env.PUBLIC_PORT || 3000; // Set a default port if PUBLIC_PO
 app.get('/ping', (req, res) => {
   res.send('pong');
 });
+const mongoose =require('mongoose');
+const {mongoURI}=require('./config');
+
+const connectToDB=async()=>{
+  try{
+    await mongoose.connect(mongoURI);
+    console.log('connected to mongoDB');
+
+  } catch(err){
+    console.error('error connecting to mongoDB:', err.message);
+
+  }
+};
+
+const disconnectDB =async ()=>{
+  try{
+    await mongoose.disconnect();
+    console.log('disconnect from mongoDB');
+
+  } catch (err){
+    console.error('error disconnecting from mongoDB:',err.message);
+  }
+}
 
 if (require.main === module) {
   app.listen(port, () => {
     console.log(`🚀 server running on PORT: ${port}`);
   });
-}
+};
+
+module.exports={
+  connectToDB,
+  disconnectDB,
+  mongooseConnection:mongoose.connection,
+};
 
 module.exports = app;
