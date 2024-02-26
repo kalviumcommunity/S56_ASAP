@@ -1,12 +1,15 @@
 const express = require('express');
+const route=require("./route");
 const app = express();
 const port = process.env.PUBLIC_PORT || 3000; 
 
 app.get('/ping', (req, res) => {
   res.send('pong');
+
 });
+app.use(route);
 const mongoose =require('mongoose');
-const {mongoURI}=require('./config');
+const {mongoURI}=require('./config/db');
 
 const connectToDB=async()=>{
   try{
