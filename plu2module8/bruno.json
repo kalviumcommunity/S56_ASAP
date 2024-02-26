@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "plu2module8",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}
