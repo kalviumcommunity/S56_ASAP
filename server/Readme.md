@@ -64,3 +64,4 @@ Optimized viewing and interaction across various devices and screen sizes.
 Repository
 
 # Deployment link: https://asap-bollywoodcouples.onrender.com/ping
+# Netlify Deployment link: https://aesthetic-chaja-1c6a57.netlify.app/
