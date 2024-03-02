@@ -1,0 +1,38 @@
+
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+.Main {
+    background-color: #dacfcf; 
+    color: #070707;
+    padding: 10px;
+    width: 100%; 
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; }
+
+.input {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #991a1a;
+}
+
+.div1 {
+    list-style-type: none;
+    display: flex;
+    justify-content: flex-end;
+    flex-grow: 1; }
+
+.div1 li {
+    margin-left: 20px; 
+    cursor: pointer;
+}
+
+.div1 li:hover {
+    text-decoration: underline; 
+}
