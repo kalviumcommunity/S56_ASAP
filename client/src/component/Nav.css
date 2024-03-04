@@ -1,20 +1,21 @@
 
 * {
-    padding: 0px;
-    margin: 0px;
-}
-
-.Main {
-    background-color: #dacfcf; 
-    color: #070707;
-    padding: 10px;
-    width: 100%; 
+    padding: 0;
+    margin: 0;
 }
 
 .navbar {
+    margin-top: -2vw;
+    margin-left:-10vw;
+    background-color: #dacfcf; 
+    color: #070707;
+    padding:1vw;
     display: flex;
     justify-content: space-between; 
-    align-items: center; }
+    align-items: center; 
+    width:98vw;
+    height: 7vh;
+}
 
 .input {
     padding: 5px;
