@@ -5,7 +5,7 @@ function Navbar(){
     return(
         <div className="Main">
             <div className="navbar">
-            <input className="input" type="text" placeholder="Choice your Favourties"/>
+            <input className="input" type="text" placeholder="Search for the couple!!"/>
 
                 <ul className="div1">
                     <li>Home</li>
