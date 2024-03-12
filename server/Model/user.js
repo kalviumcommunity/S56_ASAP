@@ -2,7 +2,6 @@ const mongoose = require("mongoose");
 
 
 const userinput= new mongoose.Schema({
-   
     coupleNames:String,
     reasonForWeirdness:String,
     moviesTogether:String,
@@ -11,7 +10,7 @@ const userinput= new mongoose.Schema({
     notableEventsControversies:String,
 })
 
-const couplemodel = mongoose.model("Couple", userinput)
+const couplemodel = mongoose.model("couples", userinput)
 
 
-module.exports=couplemodel;
+module.exports = {couplemodel};
