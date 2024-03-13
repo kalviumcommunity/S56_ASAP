@@ -1,5 +1,6 @@
+import { Link } from "react-router-dom";
 import "./Nav.css"
-import React from "react"
+import React from "react";
 
 function Navbar(){
     return(
@@ -10,7 +11,8 @@ function Navbar(){
                 <ul className="div1">
                     <li>Home</li>
                     <li>About</li>
-                    <li>Contact</li>
+                    
+                    <Link to={"/form"}><button>Add New</button></Link>
                 </ul>
             </div>
         </div>

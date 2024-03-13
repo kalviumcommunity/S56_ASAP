@@ -1,53 +1,51 @@
+//import statements
 const express = require('express');
 const route=require("./route");
-const app = express();
-const port = process.env.PUBLIC_PORT || 3000; 
-
-const couplemodel = require("./Model/user")
+const mongoose =require('mongoose');
+const {couplemodel} = require("./Model/user")
 const cors = require ('cors')
 require('dotenv').config()
-app.use((cors))
+const port = process.env.PUBLIC_PORT || 3000; 
+const mongoURI = process.env.URI;
+//function call
+const app = express();
 
+//middlewares
+app.use(cors())
+
+
+//routes
 app.get('/ping', (req, res) => {
   res.send('pong');
 
 });
 app.use(route);
-const mongoose =require('mongoose');
-const mongoURI = process.env.URI;
+
+app.get('/getdata', async (req, res)=>{ 
+  try{
+
+    let data = await couplemodel.find({})
+    res.json(data)
+  }
+  catch( err){
+    console.error(err)
+
+  }
+}) 
 
 
-app.get('/getthedata', async (req, res)=>{
-let data = await couplemodel.find({})
-res.json(data)
-})
-
+//connections
 const connectToDB=async()=>{
   try{
     console.log(mongoURI); 
     await mongoose.connect(mongoURI);
     console.log('connected to mongoDB');
-    // process.on('SIGINT', async () => {
-    //     await mongoose.disconnect();
-    //       console.log('MongoDB disconnected on app termination');
-    //       process.exit(0);
-    //       });
+    
   } catch(err){
     console.error('error connecting to mongoDB:', err.message);
-
+    
   }
 }
-
-
-// const disconnectDB =async ()=>{
-//   try{
-//     await mongoose.disconnect();
-//     console.error('disconnect from mongoDB');
-
-//   } catch (err){
-//     console.error('error disconnecting from mongoDB:',err.message);
-//   }
-// }
 
   if (require.main === module) {
     app.listen(port, () => {
