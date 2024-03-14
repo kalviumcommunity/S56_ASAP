@@ -7,7 +7,7 @@
 .navbar {
     margin-top: -2vw;
     margin-left:-10vw;
-    background-color: #dacfcf; 
+    background: #ffc057; 
     color: #070707;
     padding:1vw;
     display: flex;
@@ -25,10 +25,13 @@
 }
 
 .div1 {
+    width:500px;
     list-style-type: none;
     display: flex;
-    justify-content: flex-end;
-    flex-grow: 1; }
+    justify-content: space-around;
+    font-size: larger;
+    
+ }
 
 .div1 li {
     margin-left: 20px; 
@@ -37,4 +40,13 @@
 
 .div1 li:hover {
     text-decoration: underline; 
+}
+#LOGONAME{
+    font-style: italic;
+}
+#addnew{
+        height: 5vh;
+        width: 5vw;
+        background: #f98b60; 
+        border-radius: 5px;
 }

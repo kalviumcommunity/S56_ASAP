@@ -21,10 +21,14 @@ function Homepage() {
     <div>
       <Navbar/>
       <p id='heading'>Let's Explore the Weirdest Bollywood Couples!!</p>
-      <div className='main'>
+      <div className='main'> 
+      <div id='separate'>
         {data.map((ele, i) => (
-          <Card key={i} {...ele} getData={getData} />
+          <Card  key={i} {...ele} getData={getData} />
         ))}
+
+      </div>
+       
       </div>
     </div>
   )
