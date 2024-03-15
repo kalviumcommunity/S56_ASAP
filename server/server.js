@@ -1,9 +1,10 @@
 const express = require('express');
 const route = require('./route');
 const mongoose = require('mongoose');
-const { couplemodel } = require('./Model/user');
+const { coupleModel,coupleValidationSchema } = require('./Model/user');
 const cors = require('cors');
 require('dotenv').config();
+// const {validate} = require("joi")
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -20,34 +21,37 @@ app.get('/ping', (req, res) => {
 
 app.use(route);  
 
-app.put("/update/:id",async(req,res)=>{
-  const {id} = req.params;
-  console.log(req.body)
+app.put("/update/:id", async (req, res) => {
+  const { id } = req.params;
+  console.log(req.body);
 
-  try{
-    couplemodel.findByIdAndUpdate({_id:id},req.body)
-    .then((res)=>{
-      console.log("Video updated successfully",res)
-    })
-    .catch((err)=>{
-      console.error(err)
-    })}
-    catch(err){
-      console.error(err)
-    }
-})
+  try {
+    const updatedCouple = await coupleModel.findByIdAndUpdate({ _id: id }, req.body);
+    console.log("Couple updated successfully", updatedCouple);
+    res.json(updatedCouple); // Send back the updated couple
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
 
-app.delete('/deleteuser/:id',(req,res)=>{
-const id = req.params.id;
-couplemodel.findByIdAndDelete({_id:id})
-.then(res => res.json(res))
-.catch(err => res.json(err))
-})
+app.delete('/deleteuser/:id', async (req, res) => {
+  const id = req.params.id;
+  try {
+    const deletedCouple = await coupleModel.findByIdAndDelete({ _id: id });
+    console.log("Couple deleted successfully", deletedCouple);
+    res.json(deletedCouple); // Send back the deleted couple
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
 
 
 app.get('/getdata', async (req, res) => {
   try {
-    let data = await couplemodel.find({});
+    let data = await coupleModel.find({});
     res.json(data);
   } catch (err) {
     console.error(err);
@@ -56,12 +60,18 @@ app.get('/getdata', async (req, res) => {
 });
 
 app.post('/post', async (req, res) => {
+  const validation = coupleValidationSchema(req.body)
+  if(validation.error){
+    return res.status(400).json({error: validation.error.details[0].message})
+  }
   try {
-    let ans = await couplemodel.create(req.body);
-    res.json(ans);
+    let ans = await coupleModel.create(req.body)
+    .then((el)=>{
+      res.json(el)
+    })
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'Internal Server Error' });
+    res.send(error)
   }
 });
 

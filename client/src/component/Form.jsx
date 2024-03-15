@@ -14,6 +14,8 @@ function Form() {
 
   const handlePost = async (event) => {
     event.preventDefault();
+    
+  
     try {
       const newCouplesData = {
         coupleNames: coupleNames,
@@ -24,16 +26,15 @@ function Form() {
         notableEventsControversies: notableEventsControversies,
         img: img
       };
-
-      const res = await axios.post('http://localhost:3000/post', newCouplesData)
-      .then((res)=>{})
-      console.log("Data posted successfully!")
-
-      
+  
+      const res = await axios.post('http://localhost:3000/post', newCouplesData);
+      console.log("Data posted successfully!");
     } catch (error) {
-      console.error('Error adding couple:', error);
+      console.error(error);
     }
   };
+  
+  
 
   return (
     <>
