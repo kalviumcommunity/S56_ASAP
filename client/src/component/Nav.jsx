@@ -9,13 +9,14 @@ function Navbar(){
             <div className="navbar">
             {/* <input className="input" type="text" placeholder="Search for the couple!!"/> */}
             {/* <img src={customer} alt="" /> */}
-               <h1 id="LOGONAME" >WERIIDSHIPS</h1>
+               <h1 id="LOGONAME" > WERIIDSHIPS</h1>
 
                 <ul className="div1">
                     <li>Home</li>
-                    <li>About</li>
+                    <li>Login</li>
                     
                     <Link to={"/form"}><button  id="addnew">Add New</button></Link>
+                    
                 </ul>
             </div>
         </div>

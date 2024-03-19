@@ -27,7 +27,7 @@ function Form() {
         img: img
       };
   
-      const res = await axios.post('http://localhost:3000/post', newCouplesData);
+      const res = await axios.post('https://asap-bollywoodcouples.onrender.com/post', newCouplesData);
       console.log("Data posted successfully!");
     } catch (error) {
       console.error(error);

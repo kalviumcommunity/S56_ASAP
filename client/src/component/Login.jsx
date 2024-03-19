@@ -1,0 +1,18 @@
+import React from 'react'
+import './Login.css'
+
+function Login() {  
+    
+  return (
+    <>
+    <div>
+     <input type="text" placeholder='Username' />
+     <input type="password" placeholder='Password' />
+
+
+    </div>
+    </>
+  )
+}
+
+export default Login
