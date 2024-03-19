@@ -8,7 +8,7 @@ function Homepage() {
   const [data, setData] = useState([])
   
   const getData = () => {
-    axios.get("http://localhost:3000/getdata").then((res) => {
+    axios.get("https://asap-bollywoodcouples.onrender.com/getdata").then((res) => {
       setData(res.data)
     })
   }
