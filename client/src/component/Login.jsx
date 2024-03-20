@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import './Login.css';
 import Navbar from './Nav.jsx';
 
-function Login() {
+function Login () {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [loggedIn, setLoggedIn] = useState(false);
@@ -59,25 +59,6 @@ function Login() {
       )}
     </div>
   );
-}
-
-export default Login;
-
-import React from 'react'
-import './Login.css'
-
-function Login() {  
-    
-  return (
-    <>
-    <div>
-     <input type="text" placeholder='Username' />
-     <input type="password" placeholder='Password' />
-
-
-    </div>
-    </>
-  )
 }
 
 export default Login
