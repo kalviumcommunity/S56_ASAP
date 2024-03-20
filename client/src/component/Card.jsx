@@ -6,7 +6,7 @@ import './Card.css'
  const Card=(props)=> {
   console.log(props)
   const handleDel = ()=>{
-    axios.delete(`http://localhost:3000/deleteuser/${props._id}`)
+    axios.delete(`https://asap-bollywoodcouples.onrender.com/deleteuser/${props._id}`)
     .then((res)=>{
       // console.log(res)
       props.getData()

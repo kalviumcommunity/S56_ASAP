@@ -21,7 +21,7 @@ function Updateform() {
   const handleUpdate = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`http://localhost:3000/update/${id}`, coupleData);
+      await axios.put(`https://asap-bollywoodcouples.onrender.com/update/${id}`, coupleData);
       navigate("/");
     } catch (error) {
       console.log(error);
