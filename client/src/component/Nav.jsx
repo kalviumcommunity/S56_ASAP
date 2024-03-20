@@ -4,7 +4,7 @@ import "./Nav.css";
 
 function Navbar() {
   return (
-    <div className="Main">
+    <nav className="Main">
       <div className="navbar">
         <h1 id="LOGONAME">WERIIDSHIPS</h1>
 
@@ -20,7 +20,7 @@ function Navbar() {
           </Link>
         </ul>
       </div>
-    </div>
+    </nav>
   );
 }
 

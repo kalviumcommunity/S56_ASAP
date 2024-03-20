@@ -20,6 +20,7 @@ function Login() {
   const handleLogout = () => {
     // Clearing cookie
     document.cookie = 'username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+    // Implement server-side authentication and set HTTP-only cookies via HTTP response headers.
     setLoggedIn(false);
   };
 

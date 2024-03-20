@@ -13,7 +13,7 @@ import Login from './component/Login';
 function App() {
   return (
     <Router>
-      {/* <Navbar /> */}
+     
       <Routes>
         <Route path='/' element={<Homepage />} />
         <Route path='/form' element={<Form />} />

@@ -33,8 +33,8 @@
 }
 
 #loginbtn:hover {
-    background-color: lightblue; /* Change this to whatever color you want on hover */
-    cursor: pointer; /* Change cursor to pointer on hover */
+    background-color: lightblue; 
+    cursor: pointer; 
 }
 
 #welcometext{
@@ -51,6 +51,6 @@
 }
 
 #logoutbtn:hover {
-    background-color: lightblue; /* Change this to whatever color you want on hover */
-    cursor: pointer; /* Change cursor to pointer on hover */
+    background-color: lightblue; 
+    cursor: pointer; 
 }
