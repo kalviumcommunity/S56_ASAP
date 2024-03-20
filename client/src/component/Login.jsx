@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Login.css';
-import Navbar from './Nav';
+import Navbar from './Nav.jsx';
 
 function Login() {
   const [username, setUsername] = useState('');
