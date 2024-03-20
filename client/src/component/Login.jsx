@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import './Login.css';
 import Navbar from './Nav.jsx';
+import Axios from 'axios'
 
 function Login () {
   const [username, setUsername] = useState('');
@@ -13,6 +14,13 @@ function Login () {
       // Setting cookie with username
       document.cookie = `username=${username};`;
       setLoggedIn(true);
+      Axios.post("http://localhost:3000/auth", {username:username})
+      .then((res)=>{
+        console.log(res.data.token)
+        document.cookie= `token=${res.data.token};expries=`+new Date(2030, 0, 1).toUTCString();
+        
+      })
+
     } else {
       alert('Please fill in both username and password.');
     }
@@ -23,6 +31,8 @@ function Login () {
     document.cookie = 'username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
     // Implement server-side authentication and set HTTP-only cookies via HTTP response headers.
     setLoggedIn(false);
+    document.cookie= `token=;expries=`+new Date(2030, 0, 1).toUTCString();
+
   };
 
   return (
@@ -61,5 +71,5 @@ function Login () {
   );
 }
 
-export default Login
+export default Login;
 
