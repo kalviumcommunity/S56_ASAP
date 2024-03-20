@@ -4,6 +4,8 @@ const mongoose = require('mongoose');
 const { coupleModel,coupleValidationSchema } = require('./Model/user');
 const cors = require('cors');
 require('dotenv').config();
+const jwt=require("jsonwebtoken");
+
 // const {validate} = require("joi")
 
 const app = express();
@@ -12,7 +14,7 @@ const mongoURI = process.env.URI;
 
 // Middleware
 app.use(cors());
-app.use(express.json()); // Parse JSON bodies
+app.use(express.json()); 
 
 // Routes
 app.get('/ping', (req, res) => {
@@ -28,7 +30,7 @@ app.put("/update/:id", async (req, res) => {
   try {
     const updatedCouple = await coupleModel.findByIdAndUpdate({ _id: id }, req.body);
     console.log("Couple updated successfully", updatedCouple);
-    res.json(updatedCouple); // Send back the updated couple
+    res.json(updatedCouple); 
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: 'Internal Server Error' });
@@ -40,7 +42,7 @@ app.delete('/deleteuser/:id', async (req, res) => {
   try {
     const deletedCouple = await coupleModel.findByIdAndDelete({ _id: id });
     console.log("Couple deleted successfully", deletedCouple);
-    res.json(deletedCouple); // Send back the deleted couple
+    res.json(deletedCouple); 
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: 'Internal Server Error' });
@@ -75,6 +77,15 @@ app.post('/post', async (req, res) => {
   }
 });
 
+app.post('/auth',(req,res)=>{
+  const userName= req.body.userName
+  const user= {name:userName}
+  const token= jwt.sign(user,process.env.token)
+
+
+  res.json({token:token})
+})
+
 // Database Connection
 const connectToDB = async () => {
   try {
@@ -93,4 +104,4 @@ if (require.main === module) {
   });
 }
 
-module.exports = app; // Export for testing or future modularization
+module.exports = app; 
