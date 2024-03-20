@@ -1,0 +1,56 @@
+#loginheading {
+    color:black;
+    text-align: center;
+    font-size: 2.5rem;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    padding-top: 200px;
+}
+
+#username {
+    height: 5vh;
+    width: 16vw;
+    margin-top: 70px;
+    border-radius: 5px;
+    text-align: center;
+    font-size: larger;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+#password {
+    height: 5vh;
+    width: 16vw;
+    margin-top: 10px;
+    border-radius: 5px;
+    text-align: center;
+    font-size: larger;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+#loginbtn {
+    margin-top: 20px;
+    height: 5vh;
+    width: 10vw;
+}
+
+#loginbtn:hover {
+    background-color: lightblue; /* Change this to whatever color you want on hover */
+    cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+#welcometext{
+    padding-top: 200px;
+    text-align: center;
+    font-size: 2.5rem;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+#logoutbtn{
+    margin-top: 20px;
+    height: 5vh;
+    width: 10vw;
+}
+
+#logoutbtn:hover {
+    background-color: lightblue; /* Change this to whatever color you want on hover */
+    cursor: pointer; /* Change cursor to pointer on hover */
+}
