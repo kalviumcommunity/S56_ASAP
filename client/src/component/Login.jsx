@@ -1,48 +1,57 @@
-
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Login.css';
 import Navbar from './Nav.jsx';
-import Axios from 'axios'
+import Axios from 'axios';
 
-function Login () {
+function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [loggedIn, setLoggedIn] = useState(false);
 
+  // Check if the token exists in the cookie when component mounts
+  useEffect(() => {
+    const token = document.cookie.split(';').find(cookie => cookie.trim().startsWith('token='));
+    if (token) {
+      setLoggedIn(true);
+    }
+  }, []);
+
   const handleLogin = () => {
     if (username !== '' && password !== '') {
-      // Setting cookie with username
-      document.cookie = `username=${username};`;
-      setLoggedIn(true);
-      Axios.post("http://localhost:3000/auth", {username:username})
-      .then((res)=>{
-        console.log(res.data.token)
-        document.cookie= `token=${res.data.token};expries=`+new Date(2030, 0, 1).toUTCString();
-        
-      })
-
+      Axios.post("http://localhost:3000/auth", { username: username })
+        .then((res) => {
+          console.log(res.data.token);
+          // Store token and username in cookie
+          document.cookie = `token=${res.data.token}; expires=` + new Date(2030, 0, 1).toUTCString();
+          document.cookie = `username=${username}; expires=` + new Date(2030, 0, 1).toUTCString();
+          setLoggedIn(true);
+        })
+        .catch(error => {
+          console.error("Login failed:", error);
+          alert('Login failed. Please try again.');
+        });
     } else {
       alert('Please fill in both username and password.');
     }
   };
 
   const handleLogout = () => {
-    // Clearing cookie
+    // Clear the token and username from the cookie
+    document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
     document.cookie = 'username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
-    // Implement server-side authentication and set HTTP-only cookies via HTTP response headers.
     setLoggedIn(false);
-    document.cookie= `token=;expries=`+new Date(2030, 0, 1).toUTCString();
-
+    // Redirect to homepage
+    window.location.href = '/';
   };
 
   return (
     <div>
-      <Navbar/>
+      <Navbar />
       {!loggedIn ? (
         <form>
           <h2 id='loginheading'>Login to Remember</h2>
           <div>
-            <input 
+            <input
               type="text"
               id="username"
               placeholder="Username"
@@ -72,4 +81,3 @@ function Login () {
 }
 
 export default Login;
-

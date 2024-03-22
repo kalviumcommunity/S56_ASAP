@@ -8,8 +8,13 @@ const coupleSchema = new mongoose.Schema({
     moviesTogether: { type: String, required: true },
     yearOfRelationshipMarriage: { type: String, required: true },
     currentStatus: { type: String, required: true },
-    notableEventsControversies: { type: String, required: true }
+    notableEventsControversies: { type: String, required: true },
+    user: {type: String}
 });
+
+const userSchema=new mongoose.Schema( {
+    user: {type:String}
+})
 
 // Define Joi validation schema
 const coupleValidationSchema= (couples)=>{ 
@@ -27,6 +32,7 @@ const coupleValidationSchema= (couples)=>{
 
 // Create Mongoose model
 const coupleModel = mongoose.model("Couple", coupleSchema);
+const userModel=mongoose.model("users",userSchema )
 
 // Export the model and validation function
-module.exports = { coupleModel, coupleValidationSchema };
+module.exports = { coupleModel, coupleValidationSchema,userModel };

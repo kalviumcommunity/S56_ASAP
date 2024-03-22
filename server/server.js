@@ -1,10 +1,11 @@
 const express = require('express');
 const route = require('./route');
 const mongoose = require('mongoose');
-const { coupleModel,coupleValidationSchema } = require('./Model/user');
+const { coupleModel,coupleValidationSchema,userModel } = require('./Model/user');
 const cors = require('cors');
 require('dotenv').config();
 const jwt=require("jsonwebtoken");
+
 
 // const {validate} = require("joi")
 
@@ -52,14 +53,21 @@ app.delete('/deleteuser/:id', async (req, res) => {
 
 
 app.get('/getdata', async (req, res) => {
+  const { user } = req.query;
   try {
-    let data = await coupleModel.find({});
+    let query = {};
+    if (user && user !== 'all') {
+      query = { user };
+    }
+    let data = await coupleModel.find(query);
     res.json(data);
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
+
+
 
 app.post('/post', async (req, res) => {
   const validation = coupleValidationSchema(req.body)
@@ -78,12 +86,18 @@ app.post('/post', async (req, res) => {
 });
 
 app.post('/auth',(req,res)=>{
-  const userName= req.body.userName
+  const userName= req.body.username
+  console.log(userName)
   const user= {name:userName}
   const token= jwt.sign(user,process.env.token)
+ userModel.create({user:userName})
 
 
   res.json({token:token})
+})
+app.get('/user',async(req,res)=>{
+  let ans=await userModel.find({})
+  res.send(ans)  
 })
 
 // Database Connection
