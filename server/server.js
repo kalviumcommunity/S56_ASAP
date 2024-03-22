@@ -86,7 +86,8 @@ app.post('/post', async (req, res) => {
 });
 
 app.post('/auth',(req,res)=>{
-  const userName= req.body.userName
+  const userName= req.body.username
+  console.log(userName)
   const user= {name:userName}
   const token= jwt.sign(user,process.env.token)
  userModel.create({user:userName})
